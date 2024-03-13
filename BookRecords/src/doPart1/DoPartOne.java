@@ -1,6 +1,5 @@
 package doPart1;
 import CustomExceptions.*;
-
 import Genre.Genres;
 
 import java.io.*;
@@ -11,11 +10,10 @@ public class DoPartOne {
         BufferedReader inputFileNamesReader = null;
         FileWriter syntaxErrorFileWriter = null;
         FileWriter semanticErrorWriter = null;
-
         try {
-            inputFileNamesReader = new BufferedReader(new FileReader(".\\Comp6481_W24_Assg2-Needed-Files\\part1_input_file_names.txt"));
-            syntaxErrorFileWriter = new FileWriter(".\\Outputs\\syntax_error_file.txt");
-            semanticErrorWriter = new FileWriter(".\\Outputs\\semantic_error_file.txt");
+            inputFileNamesReader = new BufferedReader(new FileReader("../BookCatalogManager/BookRecords/src/Comp6481_W24_Assg2-Needed-Files/part1_input_file_names.txt"));
+            syntaxErrorFileWriter = new FileWriter("../BookCatalogManager/BookRecords/src/Outputs/syntax_error_file.txt");
+            semanticErrorWriter = new FileWriter("../BookCatalogManager/BookRecords/src/Outputs/semantic_error_file.txt");
 
             int numFiles = Integer.parseInt(inputFileNamesReader.readLine());
 
@@ -25,7 +23,7 @@ public class DoPartOne {
             }
 
         } catch (IOException e) {
-            e.getMessage();
+            e.printStackTrace();
         } finally {
             try {
                 if (inputFileNamesReader != null) {
@@ -36,13 +34,13 @@ public class DoPartOne {
                 }
             }
             catch (IOException e) {
-                e.getMessage();
+                e.printStackTrace();
             }
         }
     }
 
     public  void processInputFile(String fileName, FileWriter syntaxErrorFileWriter, FileWriter semanticErrorWriter) throws IOException {
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(".\\Comp6481_W24_Assg2-Needed-Files\\"+fileName))) {
+        try (BufferedReader fileReader = new BufferedReader(new FileReader("../BookCatalogManager/BookRecords/src/Comp6481_W24_Assg2-Needed-Files/"+fileName))) {
             String line;
             while ((line = fileReader.readLine()) != null) {
                 try {
@@ -187,7 +185,7 @@ public class DoPartOne {
     }
 
     public  void partitionBasedOnGenre(String line, String genre) {
-        try (FileWriter writer = new FileWriter(".\\Outputs\\"+genre + ".txt", true)) {
+        try (FileWriter writer = new FileWriter("../BookCatalogManager/BookRecords/src/Outputs/"+genre + ".txt", true)) {
             writer.write(line + "\n");
         } catch (IOException e) {
             e.printStackTrace();
