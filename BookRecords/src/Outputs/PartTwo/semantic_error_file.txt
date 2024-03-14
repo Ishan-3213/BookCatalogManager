@@ -195,10 +195,10 @@ Record: "King, B.B. - 'Blues Boy': The Life And Music of B.B. King",Sebastian Da
 
 semantic error in file: Music_Radio_Books.csv.txt
 ====================
-Error: Invalid year: 25
-Record: Metallica - Making of Metallica's Metallica,Mick Wall & Malcolm Dome,4.95,1896522343,MRB,25
+Error: Invalid-ISBN10 value: 0128647319
+Record: They Fought The Law - Rock Music Goes To Court,Stan Soocher,4.95,0128647319,MRB,2005
 
 semantic error in file: Music_Radio_Books.csv.txt
 ====================
-Error: Invalid-ISBN10 value: 0128647319
-Record: They Fought T
+Error: Invalid price: -4.95
+Record: "Turner, Ike - K
