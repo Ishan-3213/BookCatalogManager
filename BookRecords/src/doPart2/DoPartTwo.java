@@ -1,8 +1,7 @@
 package doPart2;
 import CustomExceptions.*;
-
 import java.io.*;
-import java.util.ArrayList;
+
 public class DoPartTwo {
     static String preFix = "../BookCatalogManager/BookRecords/src/Outputs/PartTwo/";
     static String partOnePrefix = "../BookCatalogManager/BookRecords/src/Outputs/PartOne/";
@@ -142,19 +141,5 @@ public class DoPartTwo {
         semanticErrorWriter.write("====================\n");
         semanticErrorWriter.write("Error: " + message + "\n");
         semanticErrorWriter.write("Record: " + line + "\n\n");
-    }
-    public static void logSemanticError(String error, String inputFile) {
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("semantic_error_file.txt", true));
-            writer.write("Semantic error in file: " + inputFile);
-            writer.newLine();
-            writer.write("====================");
-            writer.newLine();
-            writer.write("Error: " + error);
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
