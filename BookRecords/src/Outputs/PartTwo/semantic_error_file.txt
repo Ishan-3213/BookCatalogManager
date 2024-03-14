@@ -195,10 +195,76 @@ Record: "King, B.B. - 'Blues Boy': The Life And Music of B.B. King",Sebastian Da
 
 semantic error in file: Music_Radio_Books.csv.txt
 ====================
+Error: Invalid year: 25
+Record: Metallica - Making of Metallica's Metallica,Mick Wall & Malcolm Dome,4.95,1896522343,MRB,25
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
 Error: Invalid-ISBN10 value: 0128647319
 Record: They Fought The Law - Rock Music Goes To Court,Stan Soocher,4.95,0128647319,MRB,2005
 
 semantic error in file: Music_Radio_Books.csv.txt
 ====================
 Error: Invalid price: -4.95
-Record: "Turner, Ike - K
+Record: "Turner, Ike - King of Rhythm",John Collis,-4.95,1904316247,MRB,2005
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid year: 1006
+Record: Comic Strips & Comic Books of Radio's Golden Age,Ron Lackmann,16.95,1593930216,MRB,1006
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid-ISBN10 value: 0312352122
+Record: Donovan - Autobiography of Donovan: Hurdy Gurdy Man,Donovan Leitch,5.95,0312352122,MRB,2006
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid year: 26
+Record: Punk - The Heebie-Jeebies At CBGB's: A Secret History of Jewish Punk,Steven Lee Beeber,16.95,155652613X,MRB,26
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid-ISBN10 value: 0811859004
+Record: "Harrison, George - I Me Mine",George Harrison & Derek Taylor,14.95,0811859004,MRB,2007
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid-ISBN10 value: 0879308803
+Record: "Fong-Torres, Ben - Becoming Almost Famous: My Back Pages in Music, Writing, and Life",Ben Fong-Torres,12.95,0879308803,MRB,2009
+
+semantic error in file: Music_Radio_Books.csv.txt
+====================
+Error: Invalid-ISBN13 value: 7.78187E+12
+Record: "Kessel, Barney - A Jazz Legend",Maurice J. Summerfield,29.95,7.78187E+12,MRB,2009
+
+semantic error in file: Nostalgia_Eclectic_Books.csv.txt
+====================
+Error: Invalid-ISBN10 value: 1160253231
+Record: "Celebrity Skin - Tattoos, Brands, And Body Adornments of The Stars",Jim Gerard,6.95,1160253231,NEB,2005
+
+semantic error in file: Nostalgia_Eclectic_Books.csv.txt
+====================
+Error: Invalid-ISBN10 value: 0894078146
+Record: Uleta Blues & Haikus,Paul Gleason,12.95,0894078146,NEB,2006
+
+semantic error in file: Sports_Sports_Memorabilia.csv.txt
+====================
+Error: Invalid price: -28.8
+Record: "Baseball - Ott, Mel: The Little Giant of Baseball",Fred Stein,-28.8,9780786406586,SSM,1999
+
+semantic error in file: Sports_Sports_Memorabilia.csv.txt
+====================
+Error: Invalid price: -30.95
+Record: Baseball - Base-Ball Ballads,Grantland Rice,-30.95,9780786420384,SSM,2004
+
+semantic error in file: Sports_Sports_Memorabilia.csv.txt
+====================
+Error: Invalid price: -24.95
+Record: "Baseball - Ee-Yah: The Life and Times of Hughie Jennings, Baseball Hall of Famer",Jack Smiles,-24.95,0786422025,SSM,2005
+
+semantic error in file: Sports_Sports_Memorabilia.csv.txt
+====================
+Error: Invalid year: 1005
+Record: "Baseball - Minor League Baseball Standings: All North American Leagues, Through 1999",Benjamin Barrett Sumner,64.95,0786407816,SSM,1005
+

@@ -39,7 +39,9 @@ public class DoPartOne {
     }
 
     public  void processInputFile(String fileName, FileWriter syntaxErrorFileWriter) throws IOException {
-        try (BufferedReader fileReader = new BufferedReader(new FileReader(inputPrefix+fileName))) {
+        BufferedReader fileReader = null;
+        try {
+            fileReader = new BufferedReader(new FileReader(inputPrefix+fileName));
             String line;
             while ((line = fileReader.readLine()) != null) {
                 try {
@@ -48,9 +50,9 @@ public class DoPartOne {
                 }catch (TooManyFieldsException | TooFewFieldsException | MissingFieldException |
                          UnknownGenreException e) {
                     writeSyntaxError(syntaxErrorFileWriter, fileName, e.getMessage(), line);
-
                 }
             }
+            fileReader.close();
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + fileName+"\n");
         }catch (IOException e) {
@@ -75,16 +77,19 @@ public class DoPartOne {
         }
     }
 
-    public void validateAndPartitionBookRecord(String line) {
+    public void validateAndPartitionBookRecord(String line) throws IOException {
             String[] fields = Book.getFields(line);
             String genre = isValidGenre(fields[4].trim());
             partitionBasedOnGenre(line, genre);
     }
 
 
-    public  void partitionBasedOnGenre(String line, String genre) {
-        try (FileWriter writer = new FileWriter(outputPrefix+genre + ".txt", true)) {
+    public  void partitionBasedOnGenre(String line, String genre){
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(outputPrefix+genre + ".txt", true);
             writer.write(line + "\n");
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,7 +5,7 @@ import java.io.*;
 public class DoPartTwo {
     static String preFix = "../BookCatalogManager/BookRecords/src/Outputs/PartTwo/";
     static String partOnePrefix = "../BookCatalogManager/BookRecords/src/Outputs/PartOne/";
-    public void do_part2() {
+    public void do_part2() throws IOException {
         String[] inputFiles = {
                 "Cartoons_Comics_Books.csv.txt",
                 "Hobbies_Collectibles_Books.csv.txt",
@@ -30,6 +30,7 @@ public class DoPartTwo {
                 while (lineCounter.readLine()!=null){
                     lineCount++;
                 }
+                lineCounter.close();
                 BufferedReader reader = new BufferedReader(new FileReader(partOnePrefix+inputFile));
                 Book[] books = new Book[lineCount];
                 String line;
@@ -57,6 +58,7 @@ public class DoPartTwo {
                 e.printStackTrace();
             }
         }
+        semanticErrorWriter.close();
     }
 
     public static boolean isValidISBN(String isbn) {
