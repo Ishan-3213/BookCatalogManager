@@ -1,5 +1,7 @@
 package doPart2;
 
+import Genre.Genres;
+
 import java.io.Serializable;
 
 public class Book implements Serializable {
@@ -32,7 +34,7 @@ public class Book implements Serializable {
     }
 
     public String getGenre() {
-        return genre;
+        return Genres.getGenreName(genre);
     }
 
     public String getIsbn() {
@@ -45,6 +47,17 @@ public class Book implements Serializable {
 
     // TO-DO: Override equals() and toString() methods if needed
     // TO-DO: Setters
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Title: ").append(this.getTitle()).append("\n");
+        sb.append("Authors: ").append(this.getAuthors()).append("\n");
+        sb.append("Price: $").append(String.format("%.2f", this.getPrice())).append("\n");
+        sb.append("ISBN: ").append(this.getIsbn()).append("\n");
+        sb.append("Genre: ").append(this.getGenre()).append("\n");
+        sb.append("Year: ").append(this.getYear()).append("\n");
+        return sb.toString();
+    }
+
 
     public static String[] getFields(String line) {
         String[] tempFields = line.split(",");

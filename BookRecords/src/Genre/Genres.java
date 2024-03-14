@@ -18,11 +18,21 @@ public enum Genres {
         this.associatedFileName = associatedFileName;
     }
 
-    public String getGenreName() {
-        return genreName;
+    public static String getGenreName(String genre) {
+        for (Genres gnr : Genres.values()) {
+            if (gnr.name().equals(genre)) {
+                return gnr.genreName;
+            }
+        }
+        return null;
     }
 
-    public String getAssociatedFileName() {
-        return associatedFileName;
+    public static String getAssociatedFileName(String genre) {
+        for (Genres gnr : Genres.values()) {
+            if (gnr.name().equals(genre)) {
+                return gnr.associatedFileName;
+            }
+        }
+        return null;
     }
 }

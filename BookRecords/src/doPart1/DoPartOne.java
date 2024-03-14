@@ -72,14 +72,14 @@ public class DoPartOne {
             }
         }
         String genre = fields[4].trim();
-        if (isValidGenre(genre) == null) {
+        if (Genres.getAssociatedFileName(genre) == null) {
             throw new UnknownGenreException("Invalid genre: " + genre);
         }
     }
 
     public void validateAndPartitionBookRecord(String line) throws IOException {
             String[] fields = Book.getFields(line);
-            String genre = isValidGenre(fields[4].trim());
+            String genre = Genres.getAssociatedFileName(fields[4].trim());
             partitionBasedOnGenre(line, genre);
     }
 
@@ -94,16 +94,6 @@ public class DoPartOne {
             e.printStackTrace();
         }
     }
-
-    public  String isValidGenre(String genre) {
-        for (Genres gnr : Genres.values()) {
-            if (gnr.name().equals(genre)) {
-                return gnr.getAssociatedFileName();
-            }
-        }
-        return null;
-    }
-
     public  void writeSyntaxError(FileWriter writer, String fileName, String error, String line) throws IOException {
         writer.write("syntax error in file: " + fileName + "\n");
         writer.write("====================\n");

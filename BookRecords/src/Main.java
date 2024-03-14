@@ -1,5 +1,6 @@
 import doPart1.DoPartOne;
 import doPart2.DoPartTwo;
+import doPart3.DoPartThree;
 
 import java.io.IOException;
 
@@ -9,18 +10,14 @@ public class Main {
         try {
             DoPartOne doPartOne = new DoPartOne();
             DoPartTwo doPartTwo = new DoPartTwo();
+            DoPartThree doPartThree = new DoPartThree();
 
             doPartOne.do_part1();
             doPartTwo.do_part2();
-            do_part3();
-        } catch (IOException | ClassNotFoundException e) {
+            doPartThree.do_part3();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    private static void do_part3() throws IOException, ClassNotFoundException {
-        // Implement reading binary files, deserializing array objects in each file,
-        // and providing an interactive program for user navigation
-        // Handle errors as required
-    }
-
 }
