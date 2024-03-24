@@ -5,6 +5,8 @@ import java.io.*;
 public class DoPartTwo {
     static String preFix = "../BookCatalogManager/BookRecords/src/Outputs/PartTwo/";
     static String partOnePrefix = "../BookCatalogManager/BookRecords/src/Outputs/PartOne/";
+    static int validLines = 0;
+
     public void do_part2() throws IOException {
         String[] inputFiles = {
                 "Cartoons_Comics_Books.csv.txt",
@@ -41,17 +43,27 @@ public class DoPartTwo {
                         // Add the book to the list of books
                         books[bookIndex] = book;
                         bookIndex++;
+                        validLines = bookIndex;
                     } catch (BadIsbn10Exception | BadIsbn13Exception | BadPriceException | BadYearException e) {
                         // Log the semantic error to semantic_error_file.txt
                         writeSemanticError(semanticErrorWriter, inputFile, e.getMessage(), line);
                     }
                 }
                 reader.close();
+                Book[] correctBooks;
+//                if (validLines != bookIndex){
+                    correctBooks = new Book[validLines];
+                    for(int i = 0; i < validLines; i++) {
+                        correctBooks[i] = books[i];
+                    }
+//                }else {
+//                    correctBooks = books;
+//                }
 
                 // Serialize the array of Book objects into a binary file
                 String outputFile = preFix+inputFile + ".ser";
                 ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(outputFile));
-                oos.writeObject(books);
+                oos.writeObject(correctBooks);
                 oos.close();
 
             } catch (IOException e) {

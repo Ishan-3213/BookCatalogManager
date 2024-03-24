@@ -66,12 +66,37 @@ public class DoPartOne {
         } else if (fields.length < 6) {
             throw new TooFewFieldsException("Too few fields");
         }
-        for (String field : fields) {
-            if (field.isEmpty()) {
-                throw new MissingFieldException("Missing field");
-            }
+        String title = fields[0];
+        String authors = fields[1];
+        String price = fields[2];
+        String isbn = fields[3];
+        String genre = fields[4];
+        String year = fields[5];
+
+        String missingFields = "";
+        if (title.isEmpty()) {
+            missingFields += "Title, ";
         }
-        String genre = fields[4].trim();
+        if (authors.isEmpty()) {
+            missingFields += "Authors, ";
+        }
+        if (price.isEmpty()) {
+            missingFields += "Price, ";
+        }
+        if (isbn.isEmpty()) {
+            missingFields += "ISBN, ";
+        }
+        if (genre.isEmpty()) {
+            missingFields += "Genre, ";
+        }
+        if (year.isEmpty()) {
+            missingFields += "Year, ";
+        }
+
+        if (!missingFields.isEmpty()) {
+            missingFields = missingFields.substring(0, missingFields.length() - 2);
+            throw new MissingFieldException("Missing field: " + missingFields);
+        }
         if (Genres.getAssociatedFileName(genre) == null) {
             throw new UnknownGenreException("Invalid genre: " + genre);
         }
@@ -87,7 +112,7 @@ public class DoPartOne {
     public  void partitionBasedOnGenre(String line, String genre){
         FileWriter writer = null;
         try {
-            writer = new FileWriter(outputPrefix+genre + ".txt", true);
+            writer = new FileWriter(outputPrefix+genre, true);
             writer.write(line + "\n");
             writer.close();
         } catch (IOException e) {

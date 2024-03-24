@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DoPartThree {
-    private static ArrayList<Book> selectedFile = new ArrayList<>();
+    private static Book[][] selectedFile = new Book[8][];
     static String preFix = "../BookCatalogManager/BookRecords/src/Outputs/PartTwo/";
     private static int currentIndex = 0;
     public static String[] fileNames = {
@@ -31,7 +31,7 @@ public class DoPartThree {
             System.out.println("-----------------------------");
             System.out.println("Main Menu");
             System.out.println("-----------------------------");
-            System.out.println("v View the selected file: " + getSelectedFileName() + " (" + selectedFile.size() + " records)");
+            System.out.println("v View the selected file: " + getSelectedFileName() + " (" + selectedFile[currentIndex].length + " records)");
             System.out.println("s Select a file to view");
             System.out.println("x Exit");
             System.out.print("Enter Your Choice: ");
@@ -53,14 +53,16 @@ public class DoPartThree {
     }
 
     private static void loadArraysFromBinaryFiles() {
+        int i =0;
         for (String fileName : fileNames) {
             try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(preFix+fileName))) {
                 // Read array of Book objects from binary file
-                Book[] books = (Book[]) ois.readObject();
+                selectedFile[i] = (Book[]) ois.readObject();
+                i++;
                 // Add the array to selectedFiles ArrayList
-                for (Book book : books){
-                    selectedFile.add(book);
-                }
+//                for (Book book : selectedFile){
+//                    System.out.println(book.toString());
+//                }
             } catch (IOException | ClassNotFoundException e) {
                 // Handle exceptions
                 e.printStackTrace();
@@ -99,13 +101,7 @@ public class DoPartThree {
         // Simulate getting the record count for a selected file
         // This could be implemented based on the actual file data
         // For demonstration purposes, let's return some arbitrary values
-        int[] recordCounts = {4, 1, 6, 13, 5, 0, 0, 2};
-        if (index >= 0 && index < recordCounts.length) {
-            return recordCounts[index];
-        } else {
-            // Return a default value or handle the case as needed
-            return 0; // For simplicity, return 0 if index is out of bounds
-        }
+        return selectedFile[index].length;
     }
 
 
@@ -113,7 +109,7 @@ public class DoPartThree {
         Scanner scanner = new Scanner(System.in);
         int pageSize = 5; // Number of records to display at a time
 
-        System.out.println("Viewing: " + getSelectedFileName() + " (" + selectedFile.size() + " records)");
+        System.out.println("Viewing: " + getSelectedFileName() + " (" + selectedFile[currentIndex].length + " records)");
 
         while (true) {
             System.out.println("Enter +n to view the next n records, -n to view the previous n records, or 0 to exit:");
@@ -135,18 +131,18 @@ public class DoPartThree {
             if (currentIndex < 0) {
                 System.out.println("BOF (Beginning of File) has been reached.");
                 currentIndex = 0;
-            } else if (currentIndex >= selectedFile.size()) {
+            } else if (currentIndex >= selectedFile[currentIndex].length) {
                 System.out.println("EOF (End of File) has been reached.");
-                currentIndex = selectedFile.size() - 1;
+                currentIndex = selectedFile[currentIndex].length - 1;
             }
         }
     }
 
     private static void displayRecords(int start, int end, int pageSize) {
         start = Math.max(start, 0);
-        end = Math.min(end, selectedFile.size() - 1);
+        end = Math.min(end, selectedFile[currentIndex].length - 1);
         for (int i = start; i <= end; i++) {
-            System.out.println(selectedFile.get(i));
+            System.out.println(selectedFile[currentIndex][i]);
         }
     }
 }

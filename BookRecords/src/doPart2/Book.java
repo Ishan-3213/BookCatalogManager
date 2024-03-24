@@ -45,8 +45,19 @@ public class Book implements Serializable {
         return title;
     }
 
-    // TO-DO: Override equals() and toString() methods if needed
-    // TO-DO: Setters
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Book book = (Book) obj;
+        return Double.compare(book.price, price) == 0 &&
+                year == book.year &&
+                title.equals(book.title) &&
+                authors.equals(book.authors) &&
+                isbn.equals(book.isbn) &&
+                genre.equals(book.genre);
+    }
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Title: ").append(this.getTitle()).append("\n");
@@ -60,7 +71,7 @@ public class Book implements Serializable {
 
 
     public static String[] getFields(String line) {
-        String[] tempFields = line.split(",");
+        String[] tempFields = line.split(",", -1);
         String title= tempFields[0];
         int count = 0;
         if (title.startsWith("\"")){
