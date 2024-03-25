@@ -5,6 +5,7 @@
 // Written by: Ishan Pansuriya(40232841) && Tanmay Soni(40240650)
 // Due Date: 24/03/2024
 // ----------------------------------------------------
+
 package doPart3;
 
 import doPart2.Book;
@@ -14,6 +15,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+/**
+ * This class represents the implementation of Part 3 of Question 3 for Assignment 2 of COMP6481.
+ * It provides functionalities to view and navigate through records in selected files.
+ */
 
 public class DoPartThree {
     private static Book[][] selectedFile = new Book[8][];
@@ -30,6 +36,10 @@ public class DoPartThree {
             "Sports_Sports_Memorabilia.csv.txt.ser",
             "Trains_Planes_Automobiles.csv.txt.ser"
     };
+
+    /**
+     * Executes Part 3 of the assignment.
+     */
     public void do_part3() {
         loadArraysFromBinaryFiles();
 
@@ -40,7 +50,7 @@ public class DoPartThree {
             System.out.println("-----------------------------");
             System.out.println("Main Menu");
             System.out.println("-----------------------------");
-            System.out.println("v View the selected file: " + getSelectedFileName() + " (" + selectedFile[currentIndex].length + " records)");
+            System.out.println("v View the selected file: " + getSelectedFileName() + " (" + selectedFile[fileCurrentIndex].length + " records)");
             System.out.println("s Select a file to view");
             System.out.println("x Exit");
             System.out.print("Enter Your Choice: ");
@@ -68,10 +78,6 @@ public class DoPartThree {
                 // Read array of Book objects from binary file
                 selectedFile[i] = (Book[]) ois.readObject();
                 i++;
-                // Add the array to selectedFiles ArrayList
-//                for (Book book : selectedFile){
-//                    System.out.println(book.toString());
-//                }
             } catch (IOException | ClassNotFoundException e) {
                 // Handle exceptions
                 e.printStackTrace();
@@ -81,8 +87,7 @@ public class DoPartThree {
 
     private static String getSelectedFileName() {
         // Return the name of the currently selected file
-        // For demonstration purposes, let's assume the file names are hard-coded
-        return fileNames[currentIndex];
+        return fileNames[fileCurrentIndex];
     }
 
     private static void selectFile(Scanner scanner) {
@@ -91,13 +96,7 @@ public class DoPartThree {
         System.out.println("-----------------------------");
         int maxLength = 0;
 
-
         for (int i = 0; i < fileNames.length; i++) {
-
-//            maxLength = Math.max(maxLength, fileNames.length);
-//            int padding = maxLength - fileNames.length;
-//            System.out.printf("%d %s%s%d records)%n", i + 1, fileNames[i], " ".repeat(padding + 1), recordCount);
-
             System.out.println((i + 1) + " " + fileNames[i] + " (" + getRecordCount(i) + " records)");
         }
         System.out.println((fileNames.length + 1) + " Exit");
@@ -116,12 +115,12 @@ public class DoPartThree {
 
     private static int getRecordCount(int index) {
         // Simulate getting the record count for a selected file
-        // This could be implemented based on the actual file data
-        // For demonstration purposes, let's return some arbitrary values
         return selectedFile[index].length;
     }
 
-
+    /**
+     * Displays the selected file and allows navigation through its records.
+     */
     public static void viewSelectedFile() {
         Scanner scanner = new Scanner(System.in);
         int pageSize = 5; // Number of records to display at a time
@@ -157,7 +156,7 @@ public class DoPartThree {
 
     private static void displayRecords(int start, int end, int pageSize) {
         start = Math.max(start, 0);
-        end = Math.min(end, selectedFile[fileCurrentIndex].length);
+        end = Math.min(end, selectedFile[fileCurrentIndex].length-1);
         for (int i = start; i <= end; i++) {
             System.out.println(selectedFile[fileCurrentIndex][i]);
         }

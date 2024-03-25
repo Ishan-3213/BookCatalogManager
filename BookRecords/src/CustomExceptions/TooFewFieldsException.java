@@ -6,7 +6,17 @@
 // ----------------------------------------------------
 package CustomExceptions;
 
+/**
+ * This class represents a custom exception for too few fields.
+ * It extends the Exception class.
+ */
 public class TooFewFieldsException extends Exception {
+
+    /**
+     * Constructs a new TooFewFieldsException with the specified detail message.
+     *
+     * @param message the detail message (which is saved for later retrieval by the getMessage() method)
+     */
     public TooFewFieldsException(String message) {
         super(message);
     }
