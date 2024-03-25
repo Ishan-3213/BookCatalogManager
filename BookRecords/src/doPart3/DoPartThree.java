@@ -12,6 +12,7 @@ public class DoPartThree {
     private static Book[][] selectedFile = new Book[8][];
     static String preFix = "../BookCatalogManager/BookRecords/src/Outputs/PartTwo/";
     private static int currentIndex = 0;
+    private static int fileCurrentIndex = 0;
     public static String[] fileNames = {
             "Cartoons_Comics_Books.csv.txt.ser",
             "Hobbies_Collectibles_Books.csv.txt.ser",
@@ -80,7 +81,15 @@ public class DoPartThree {
         System.out.println("-----------------------------");
         System.out.println("File Sub-Menu");
         System.out.println("-----------------------------");
+        int maxLength = 0;
+
+
         for (int i = 0; i < fileNames.length; i++) {
+
+//            maxLength = Math.max(maxLength, fileNames.length);
+//            int padding = maxLength - fileNames.length;
+//            System.out.printf("%d %s%s%d records)%n", i + 1, fileNames[i], " ".repeat(padding + 1), recordCount);
+
             System.out.println((i + 1) + " " + fileNames[i] + " (" + getRecordCount(i) + " records)");
         }
         System.out.println((fileNames.length + 1) + " Exit");
@@ -88,7 +97,7 @@ public class DoPartThree {
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline
         if (choice >= 1 && choice <= fileNames.length) {
-            currentIndex = choice - 1;
+            fileCurrentIndex = choice - 1;
             System.out.println("Selected file: " + getSelectedFileName());
         } else if (choice == fileNames.length + 1) {
             System.out.println("Exiting file selection...");
@@ -129,20 +138,20 @@ public class DoPartThree {
                 currentIndex += choice;
             }
             if (currentIndex < 0) {
-                System.out.println("BOF (Beginning of File) has been reached.");
+                System.out.println("BOF (Beginning of File) has been reached.\n");
                 currentIndex = 0;
-            } else if (currentIndex >= selectedFile[currentIndex].length) {
-                System.out.println("EOF (End of File) has been reached.");
-                currentIndex = selectedFile[currentIndex].length - 1;
+            } else if (currentIndex > selectedFile[fileCurrentIndex].length) {
+                System.out.println("EOF (End of File) has been reached.\n");
+                currentIndex = selectedFile[fileCurrentIndex].length - 1;
             }
         }
     }
 
     private static void displayRecords(int start, int end, int pageSize) {
         start = Math.max(start, 0);
-        end = Math.min(end, selectedFile[currentIndex].length - 1);
+        end = Math.min(end, selectedFile[fileCurrentIndex].length - 1);
         for (int i = start; i <= end; i++) {
-            System.out.println(selectedFile[currentIndex][i]);
+            System.out.println(selectedFile[fileCurrentIndex][i]);
         }
     }
 }

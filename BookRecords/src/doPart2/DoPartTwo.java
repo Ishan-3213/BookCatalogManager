@@ -112,9 +112,7 @@ public class DoPartTwo {
         int sum = 0;
         for (int i = 0; i < 10; i++) {
             char digit = isbn.charAt(i);
-            if (i == 9 && digit == 'X') {
-                sum += 10;
-            } else if (Character.isDigit(digit)) {
+            if (i == 9 && digit == 'X') {} else if (Character.isDigit(digit)) {
                 sum += (10 - i) * Character.getNumericValue(digit);
             } else {
                 return false; // Invalid character in ISBN
