@@ -1,3 +1,8 @@
+// -----------------------------------------------------
+// Assignment - 2
+// Question: 3 Part 3.
+// Written by: Ishan Pansuriya(40232841) && Tanmay Soni(40240650)
+// ----------------------------------------------------
 package doPart3;
 
 import doPart2.Book;
@@ -149,7 +154,7 @@ public class DoPartThree {
 
     private static void displayRecords(int start, int end, int pageSize) {
         start = Math.max(start, 0);
-        end = Math.min(end, selectedFile[fileCurrentIndex].length - 1);
+        end = Math.min(end, selectedFile[fileCurrentIndex].length);
         for (int i = start; i <= end; i++) {
             System.out.println(selectedFile[fileCurrentIndex][i]);
         }
