@@ -1,7 +1,9 @@
 // -----------------------------------------------------
 // Assignment - 2
 // Question: 3 Part 3.
+// COMP6481
 // Written by: Ishan Pansuriya(40232841) && Tanmay Soni(40240650)
+// Due Date: 24/03/2024
 // ----------------------------------------------------
 package doPart3;
 
@@ -34,6 +36,7 @@ public class DoPartThree {
         // Interactive menu loop
         Scanner scanner = new Scanner(System.in);
         while (true) {
+            System.out.println("Welcome to the Book Record Processor! by Ishan(40232841) & Tanmay(40240650) ");
             System.out.println("-----------------------------");
             System.out.println("Main Menu");
             System.out.println("-----------------------------");

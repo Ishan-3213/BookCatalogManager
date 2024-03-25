@@ -1,7 +1,9 @@
 // -----------------------------------------------------
 // Assignment - 2
 // Question: 2 Part 2.
+// COMP6481
 // Written by: Ishan Pansuriya(40232841) && Tanmay Soni(40240650)
+// Due Date: 24/03/2024
 // ----------------------------------------------------
 package doPart2;
 import CustomExceptions.*;
