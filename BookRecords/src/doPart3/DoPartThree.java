@@ -125,7 +125,7 @@ public class DoPartThree {
         Scanner scanner = new Scanner(System.in);
         int pageSize = 5; // Number of records to display at a time
 
-        System.out.println("Viewing: " + getSelectedFileName() + " (" + selectedFile[currentIndex].length + " records)");
+        System.out.println("Viewing: " + getSelectedFileName() + " (" + selectedFile[fileCurrentIndex].length + " records)");
 
         while (true) {
             System.out.println("Enter +n to view the next n records, -n to view the previous n records, or 0 to exit:");
